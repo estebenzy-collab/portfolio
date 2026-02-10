@@ -7,4 +7,86 @@
     <h1>My name is Esther</h1>
     <p>I am a new web developer</p>
   </body>
+
 </html>
+// Mobile Hamburger Menu
+
+const mobileMenu = document.getElementById('mobile-menu');
+
+const navbar = document.getElementById('navbar');
+
+mobileMenu.addEventListener('click', () => {
+
+  navbar.classList.toggle('active');
+
+});
+
+// Back to Top Button
+
+const backToTop = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+
+  if (window.scrollY > 300) {
+
+    backToTop.style.display = 'block';
+
+  } else {
+
+    backToTop.style.display = 'none';
+
+  }
+
+});
+
+backToTop.addEventListener('click', () => {
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+});
+
+// Scroll Animation for Sections
+
+const sections = document.querySelectorAll('.scroll-section');
+
+function revealSections() {
+
+  const triggerBottom = window.innerHeight * 0.85;
+
+  sections.forEach(section => {
+
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < triggerBottom) {
+
+      section.classList.add('visible');
+
+    }
+
+  });
+
+}
+
+window.addEventListener('scroll', revealSections);
+
+revealSections(); // run on load
+
+// Header Letter Animation
+
+const header = document.getElementById('animated-header');
+
+const letters = header.textContent.split('');
+
+header.textContent = '';
+
+letters.forEach((letter, i) => {
+
+  const span = document.createElement('span');
+
+  span.textContent = letter;
+
+  span.style.animationDelay = `${i * 0.05}s`; // stagger letters
+
+  header.appendChild(span);
+
+});
